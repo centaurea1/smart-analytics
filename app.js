@@ -270,6 +270,12 @@ var series = products.filter(product => product.year === 2016).map(product => {
     } 
 });
 
+var second = products.filter(product => product.year === 2015).map(product => {
+    return {
+        name: product.name,
+        data: [[product.feature1, product.feature2]]
+    } 
+});
 
 
 window.addEventListener('load', function () {
