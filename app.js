@@ -335,6 +335,7 @@ window.addEventListener('load', function () {
                 }
             }
         },
-        series: series
+        series: series, second
     });
 });
+
