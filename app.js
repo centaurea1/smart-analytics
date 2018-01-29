@@ -269,15 +269,12 @@ var series = products.filter(product => product.year === 2016).map(product => {
     } 
 });
 
-
 var second = products.filter(product => product.year === 2015).map(product => {
     return {
         name: product.name,
         data: [[product.feature1, product.feature2]]
     } 
 });
-
-
 
 window.addEventListener('load', function () {
     var myChart = Highcharts.chart('container', {
@@ -340,5 +337,39 @@ window.addEventListener('load', function () {
     });
 });
 
+
 var max = Math.max(...products.map(product => product.year));
+var min = Math.min(...products.map(product => product.year));
+
+function getSeries(max, min) {
+    var year = max;
+    return series;
+}
+
+function createChart(series) {
+    var config = series;
+    var chart =  Highcharts.chart('container', config);
+    return chart;
+}
+
+function updateChart(chart, min) {
+    var series = getSeries(min);
+    var config = second;
+    chart.update(chart, true, true);
+    return second;
+}
+
+function clickSelect(event){ 
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+    var year = max;
+    var series = getSeries(year);
+    var chart = createChart(series);
+
+    var mySelectElement = document.querySelector("#mySelect");
+    mySelectElement.value = year;
+    mySelectElement.onchange = clickSelect;
+});
+
 
